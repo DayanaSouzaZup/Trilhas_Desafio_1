@@ -6,9 +6,10 @@ import org.springframework.stereotype.Repository;
 import br.com.zup.estrelas.desafioTrilhas.entity.Cliente;
 
 @Repository
-public interface ClienteRepository extends CrudRepository<Cliente, Long>{
+public interface ClienteRepository extends CrudRepository<Cliente, String>{
 	
+	//TODO
 	//Por que precisa usar uma interface?
-	//E por qur usar um Long?
+	//E por que usar um Long?
 
 }

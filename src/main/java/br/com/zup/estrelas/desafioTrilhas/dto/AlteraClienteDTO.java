@@ -1,31 +1,17 @@
-package br.com.zup.estrelas.desafioTrilhas.entity;
+package br.com.zup.estrelas.desafioTrilhas.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class AlteraClienteDTO {
 
-@Entity
-@Table(name = "clientes")
-public class Cliente {
-
-	@Column(nullable = false)
 	private String nome;
 
-	@Id
-	@Column(nullable = false, unique = true)
 	private String cpf;
 
-	@Column(nullable = false)
 	private int idade;
 
-	@Column(nullable = false)
 	private String telefone;
 
-	@Column(nullable = false)
 	private String endereco;
 
-	@Column(nullable = false)
 	private String email;
 
 	public String getNome() {

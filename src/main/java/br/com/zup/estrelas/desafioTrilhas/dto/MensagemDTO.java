@@ -1,4 +1,4 @@
-package br.com.zup.estrelas.desafioTrilhas.service;
+package br.com.zup.estrelas.desafioTrilhas.dto;
 
 public class MensagemDTO {
 

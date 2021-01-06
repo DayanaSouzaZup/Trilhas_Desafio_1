@@ -39,8 +39,13 @@ public class ClienteService implements IClienteService{
 	public Cliente buscaCliente(String cpf) {
 
 		return clienteRepository.findById(cpf).orElse(null);
-	}
+		
+		//TODO
+	//Não precisa de algo para buscar um cliente inexistente?
 
+	}
+	
+	
 	public List<Cliente> listaClientes() {
 
 		return (List<Cliente>) clienteRepository.findAll();
@@ -48,7 +53,9 @@ public class ClienteService implements IClienteService{
 
 	public MensagemDTO removeCliente(String cpf) {
 
-		if (clienteRepository.existsById(cpf)) {
+		if (cpf != null && clienteRepository.existsById(cpf)) {
+			
+			clienteRepository.deleteById(cpf);
 
 			return new MensagemDTO(CLIENTE_REMOVIDO_COM_SUCESSO);
 		}
@@ -70,6 +77,8 @@ public class ClienteService implements IClienteService{
 			clienteAlterado.setEndereco(alteraClienteDTO.getEndereco());
 			clienteAlterado.setEmail(alteraClienteDTO.getEmail());
 
+			clienteRepository.save(clienteAlterado);
+			
 			return new MensagemDTO(CLIENTE_ALTERADO_COM_SUCESSO);
 		}
 		return new MensagemDTO(CLIENTE_INEXISTENTE);

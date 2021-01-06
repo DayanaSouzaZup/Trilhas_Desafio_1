@@ -10,6 +10,7 @@ import br.com.zup.estrelas.desafioTrilhas.dto.AlteraClienteDTO;
 import br.com.zup.estrelas.desafioTrilhas.dto.MensagemDTO;
 import br.com.zup.estrelas.desafioTrilhas.entity.Cliente;
 import br.com.zup.estrelas.desafioTrilhas.repository.ClienteRepository;
+import br.com.zup.estrelas.sb.exceptions.RegrasDeNegocioException;
 
 @Service
 public class ClienteService implements IClienteService{
@@ -36,12 +37,14 @@ public class ClienteService implements IClienteService{
 		return new MensagemDTO(CLIENTE_CADASTRADO_COM_SUCESSO);
 	}
 
-	public Cliente buscaCliente(String cpf) {
+	public Cliente buscaCliente(String cpf) throws Exception {
 
-		return clienteRepository.findById(cpf).orElse(null);
+		return clienteRepository.findById(cpf).orElseThrow(
+                () -> new Exception(CLIENTE_INEXISTENTE));
 		
 		//TODO
-	//Não precisa de algo para buscar um cliente inexistente?
+		//Não precisa de algo para buscar um cliente inexistente?
+		// CPF inválido talvez?
 
 	}
 	
@@ -71,7 +74,6 @@ public class ClienteService implements IClienteService{
 			Cliente clienteAlterado = clienteConsultado.get();
 
 			clienteAlterado.setNome(alteraClienteDTO.getNome());
-			clienteAlterado.setCpf(alteraClienteDTO.getCpf());
 			clienteAlterado.setIdade(alteraClienteDTO.getIdade());
 			clienteAlterado.setTelefone(alteraClienteDTO.getTelefone());
 			clienteAlterado.setEndereco(alteraClienteDTO.getEndereco());

@@ -31,13 +31,13 @@ public class ClienteController {
 	}
 
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-	public MensagemDTO adicionaCliente(@RequestBody Cliente cpf) {
+	public MensagemDTO adicionaCliente(@RequestBody Cliente cliente) {
 
-		return clienteService.adicionaCliente(cpf);
+		return clienteService.adicionaCliente(cliente);
 	}
 
 	@GetMapping(path = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Cliente buscaCliente(@PathVariable String cpf) {
+	public Cliente buscaCliente(@PathVariable String cpf) throws Exception {
 
 		return clienteService.buscaCliente(cpf);
 	}

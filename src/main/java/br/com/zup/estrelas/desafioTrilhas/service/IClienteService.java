@@ -10,7 +10,7 @@ public interface IClienteService {
 	
 	public MensagemDTO adicionaCliente(Cliente cliente);
 	
-	public Cliente buscaCliente(String cpf);
+	public Cliente buscaCliente(String cpf)throws Exception;
 	
 	public List<Cliente> listaClientes();
 	
